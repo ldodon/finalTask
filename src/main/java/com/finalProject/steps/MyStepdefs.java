@@ -68,12 +68,15 @@ public class MyStepdefs {
     }
 
     @When("user choose {string}")
-    public void userChooseSubjectHeading(String subj) {
+    public void userChooseSubjectHeading(String subj)  {
+
         if (subj.equals("Subject Heading")) {
             new Select(contactPage.getSubject()).selectByValue("1");
         }else {
             throw new RuntimeException("Unknown select " + subj);
         }
+        ScreenshotUtils.takeScreenshot(subj);
+
         logger.info("User chose {} as Subject Heading", subj);
 
     }
